@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Treat
+
+<div class="content">
+  <h3>Are you sure you want to remove this treat?</h3>
+
+  @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+  @using (Html.BeginForm())
+  {
+    <input type="submit" value="Delete" class="btn btn-primary" />
+  }
+  <hr />
+  @Html.ActionLink("Back to Treat Menu", "Index")
+</div>
