@@ -1,0 +1,19 @@
+body {
+	/* background-image: url("https://images.unsplash.com/photo-1524514587686-e2909d726e9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80");
+	background-size: cover; */
+	color:black;
+	
+}
+
+.content {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #eee;
+  margin-top: 20px;
+}
+
+.join_style {
+  border: 2px solid red;
+  padding: 5px;
+}
