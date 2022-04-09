@@ -14,8 +14,8 @@ namespace PierresTreats
     public Startup(IWebHostEnvironment env)
     {
       var builder = new ConfigurationBuilder()
-          .SetBasePath(env.ContentRootPath)
-          .AddJsonFile("appsettings.json");
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
 
@@ -28,6 +28,12 @@ namespace PierresTreats
       services.AddEntityFrameworkMySql()
         .AddDbContext<PierresTreatsContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<PierresTreatsContext>()
+        .AddDefaultTokenProviders();
+
+    
     }
 
     public void Configure(IApplicationBuilder app)
@@ -46,7 +52,7 @@ namespace PierresTreats
       });
 
       app.UseStaticFiles();
-      
+
       app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Hello World!");
