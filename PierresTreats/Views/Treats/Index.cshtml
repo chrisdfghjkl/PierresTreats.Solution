@@ -3,20 +3,24 @@
 }
 
 @using PierresTreats.Models;
-@model List<PierresTreats.Models.Treat>;
+@model IEnumerable<PierresTreats.Models.Treat>
 
 <div class="content">
   <h3>Treats</h3>
 
-  @if (@Model.Count == 0)
-  {
-    <h5>No treats have been added yet</h5>
-  } 
-
-  @foreach (Treat treat in Model)
-  {
-    <li>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</li>
-  }
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <li>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No items have been added yet!</h3>
+}
   <hr />
   <p>@Html.ActionLink("Add Treat", "Create")</p>
   <p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -8,6 +8,11 @@
   </head>
   <body>
     <div class="container">
+      @if(User.Identity.IsAuthenticated)
+      {
+        @await Html.PartialAsync("Footer")
+      }
+      <br>
       @RenderBody()
     </div>
   </body>
