@@ -218,7 +218,12 @@ namespace PierresTreats.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("FlavorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -253,7 +258,12 @@ namespace PierresTreats.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -309,6 +319,15 @@ namespace PierresTreats.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PierresTreats.Models.Flavor", b =>
+                {
+                    b.HasOne("PierresTreats.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("PierresTreats.Models.FlavorTreat", b =>
                 {
                     b.HasOne("PierresTreats.Models.Flavor", "Flavor")
@@ -326,6 +345,15 @@ namespace PierresTreats.Migrations
                     b.Navigation("Flavor");
 
                     b.Navigation("Treat");
+                });
+
+            modelBuilder.Entity("PierresTreats.Models.Treat", b =>
+                {
+                    b.HasOne("PierresTreats.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PierresTreats.Models.Flavor", b =>
