@@ -10,9 +10,11 @@ Layout = "_Layout";
     <h3>Welcome @User.Identity.Name!</h3>
     <br>
     <h5>Navigator:</h5>
-    <p>@Html.ActionLink("Go Home", "Index", "Home")</p>
-    <p>@Html.ActionLink("Go to Flavor List", "Index", "Flavors")</p>
-    <p>@Html.ActionLink("Go to Treat Menu", "Index", "Treats")</p> 
+    <ul>
+    <li>@Html.ActionLink("Go Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Go to Flavor List", "Index", "Flavors")</li>
+    <li>@Html.ActionLink("Go to Treat Menu", "Index", "Treats")</li> 
+    </ul>
     <hr />
     @using (Html.BeginForm("LogOff", "Account"))
     {
