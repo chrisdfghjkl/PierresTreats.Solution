@@ -12,6 +12,10 @@
       {
         @await Html.PartialAsync("Footer")
       }
+      else
+      {
+        @await Html.PartialAsync("Footer2")
+      }
       <br>
       @RenderBody()
     </div>
