@@ -46,3 +46,10 @@ div#footer2 {
 .btn-sm {
 	padding: 2px;
 }
+
+.required {
+	font-style: italic;
+	color: rgb(162, 162, 162);
+	font-size: 11px;
+	margin-top: -7px;
+}
