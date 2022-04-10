@@ -1,9 +1,71 @@
 @{
   Layout = "_Layout";
 }
+
+@using PierresTreats.Models
+@model List<PierresTreats.Models.Treat>
+
 <div style="text-align: center; margin-top: 5px;" class="jumbotron">
   <h1>Welcome to Pierre's World Famous Bakery</h1>
   <h3>We've got the treats</h3>
   <hr />
-  <p>@Html.ActionLink("Treat Menu", "Index", "Treats") | @Html.ActionLink("Flavor List", "Index", "Flavors")</p>
-</div>
+  <p>@Html.ActionLink("Treat List", "Index", "Treats") | @Html.ActionLink("Flavor List", "Index", "Flavors")</p>
+  <br>
+  <div class="row">
+      <div class="col">
+        <table class="table">
+          <tr>
+            <th>
+              Available Treats
+            </th>
+          </tr>
+          @if (Model.Count == 0)
+          {
+            <tr>
+              <td colspan="4">
+                No treats added
+              </td>
+            </tr>
+          }
+          else
+          {
+            @foreach (Treat treat in Model)
+            {
+              <tr>
+                <td>
+                  @Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId})
+                </td>
+              </tr>
+            }
+          }
+        </table>
+      </div>
+      <div class="col">
+        <table class="table">
+          <tr>
+            <th>
+              Flavor Profiles
+            </th>
+          </tr>
+          @if (ViewBag.Flavors.Count == 0)
+          {
+            <tr>
+              <td colspan="4">
+                No flavors added
+              </td>
+            </tr>
+          }
+          else
+          {
+            @foreach (Flavor flavor in ViewBag.Flavors)
+            {
+              <tr>
+                <td>
+                  @Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId})
+                </td>
+              </tr>
+            }
+          }
+        </table>
+      </div>
+    </div>
