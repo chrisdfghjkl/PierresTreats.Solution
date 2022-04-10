@@ -27,3 +27,7 @@ div#footer {
   border: 2px solid red;
   padding: 5px;
 }
+
+.btn-sm {
+	padding: 2px;
+}
